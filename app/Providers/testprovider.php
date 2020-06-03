@@ -34,9 +34,13 @@ class testprovider extends ServiceProvider
         // $this->app->bind('App\Service\TestService',
         //     'App\Service\TestServiceImp');
 
-        $container->when(ttcontroller::class)
-            ->needs('App\Service\TestService')
-            ->give(TestServiceImp::class);
+        // $container->when(ttcontroller::class)
+        //     ->needs('App\Service\TestService')
+        //     ->give(TestServiceImp::class);
+        // $container->when(ttcontroller::class)
+        //     ->needs(TestService::class)
+        //     ->give(TestServiceImp::class);
+
 
         // $container->bind(testrequest::class,
         //     testre::class);

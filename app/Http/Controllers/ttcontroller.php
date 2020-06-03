@@ -14,8 +14,8 @@ class ttcontroller extends Controller
         $this->test = $test;
     }
     public function index(){
-        // return $this->test->test();
-        return var_dump($this->request);
+        return $this->test->test();
+        // return var_dump($this->request);
     }
 
     public function test(){
