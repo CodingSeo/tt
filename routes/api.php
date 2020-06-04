@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [
     'as' =>'index',
-    'uses'=>'testcontroller@index',
+    'uses'=>'ttcontroller@index',
 ]);
 
 
-Route::post('/1', [
+Route::post('/test', [
     'as' =>'index',
-    'uses'=>'testcontroller@store',
+    'uses'=>'ttcontroller@test',
 ]);

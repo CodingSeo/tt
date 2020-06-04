@@ -18,7 +18,7 @@ Route::get('/', [
     'uses'=>'testcontroller@index',
 ]);
 
-Route::get('/test', [
+Route::post('/test', [
     'as' =>'index',
-    'uses'=>'ttcontroller@index',
+    'uses'=>'ttcontroller@test',
 ]);

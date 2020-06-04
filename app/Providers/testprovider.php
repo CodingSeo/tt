@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use ApiRequest;
 use Illuminate\Support\ServiceProvider;
 use App\Service\TestService;
 use App\Service\TestServiceImp;
@@ -13,7 +14,7 @@ use Illuminate\Container\Container;
 use App\Http\Requests\testrequest;
 use App\Http\Requests\testre;
 
-
+use Illuminate\Foundation\Http\FormRequest;
 
 class testprovider extends ServiceProvider
 {
@@ -34,20 +35,25 @@ class testprovider extends ServiceProvider
         // $this->app->bind('App\Service\TestService',
         //     'App\Service\TestServiceImp');
 
+        $this->app->bind(testrequest::class,
+            testre::class);
+
         // $container->when(ttcontroller::class)
         //     ->needs('App\Service\TestService')
         //     ->give(TestServiceImp::class);
-        // $container->when(ttcontroller::class)
-        //     ->needs(TestService::class)
-        //     ->give(TestServiceImp::class);
 
+        $container->when(ttcontroller::class)
+            ->needs(TestService::class)
+            ->give(TestServiceImp::class);
+
+        // $container->when(ttcontroller::class)
+        //     ->needs(testrequest::class)
+        //     ->give(testre::class);
 
         // $container->bind(testrequest::class,
         //     testre::class);
 
-        $container->when(ttcontroller::class)
-            ->needs(testrequest::class)
-            ->give(testre::class);
+
     }
 
     /**
@@ -57,9 +63,6 @@ class testprovider extends ServiceProvider
      */
     public function boot()
     {
-        //
-    }
-    public function provides(){
-        return[ttcontroller::class];
+
     }
 }

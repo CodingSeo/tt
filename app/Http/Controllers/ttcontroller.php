@@ -3,22 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\testrequest;
+u
 use App\Service\TestService;
 
 class ttcontroller extends Controller
 {
-    private $request;
     private $test;
-    public function __construct(testrequest $request, TestService $test){
-        $this->request = $request;
+    public function __construct(TestService $test){
         $this->test = $test;
     }
     public function index(){
         return $this->test->test();
-        // return var_dump($this->request);
+
     }
 
-    public function test(){
-        return $this->test->test();
+    public function test(APItestrequest $request){
+        return var_dump($request);
+        // return 'test';
     }
+
+    public function testpost(APItestpostrequest $request){
+        return var_dump($request);
+        // return 'test';
+    }
+
 }
