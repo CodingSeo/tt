@@ -8,12 +8,12 @@ use App\Service\TestServiceImp;
 
 use App\Http\Controllers\testcontroller;
 use App\Http\Controllers\ttcontroller;
-use Illuminate\Container\Container;
 
-use App\Http\Requests\testrequest;
-use App\Http\Requests\testre;
-
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\APIrequest;
+use App\Http\Requests\APIrequestImp;
+use App\Http\Requests\APIrequestImpWithAuth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class testprovider extends ServiceProvider
 {
@@ -29,30 +29,25 @@ class testprovider extends ServiceProvider
     public function register()
     {
         $container = $this->app;
+        $request = $container->request;
+        $route_name =  $request->getMethod() . $request->getRequestUri();
+        switch ($route_name) {
+            case "GET/index":
+                $container->bind(APIrequest::class, APIrequestImp::class);
+                break;
+            case 'POST/test':
+                $container->bind(APIrequest::class, APIrequestImp::class);
+                break;
+            case 'POST/auth':
+                $container->bind(APIrequest::class, APIrequestImpWithAuth::class);
+                break;
+            default:
+                $container->bind(APIrequest::class, APIrequestImpWithAuth::class);
+                break;
+        }
 
-
-        // $this->app->bind('App\Service\TestService',
-        //     'App\Service\TestServiceImp');
-
-        $this->app->bind(testrequest::class,
-            testre::class);
-
-        // $container->when(ttcontroller::class)
-        //     ->needs('App\Service\TestService')
-        //     ->give(TestServiceImp::class);
-
-        $container->when(ttcontroller::class)
-            ->needs(TestService::class)
-            ->give(TestServiceImp::class);
-
-        // $container->when(ttcontroller::class)
-        //     ->needs(testrequest::class)
-        //     ->give(testre::class);
-
-        // $container->bind(testrequest::class,
-        //     testre::class);
-
-
+        // $container->bind(APIrequest::class, APIrequestImp::class);
+        $container->when(ttcontroller::class)->needs(TestService::class)->give(TestServiceImp::class);
     }
 
     /**
@@ -62,6 +57,5 @@ class testprovider extends ServiceProvider
      */
     public function boot()
     {
-
     }
 }

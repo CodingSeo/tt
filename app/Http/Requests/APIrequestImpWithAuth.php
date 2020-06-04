@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\APIrequest;
 
-class APIrequestImp extends APIrequest
+class APIrequestImpWithAuth extends APIrequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class APIrequestImp extends APIrequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,6 +23,8 @@ class APIrequestImp extends APIrequest
      */
     public function rules()
     {
-        return [];
+        return [
+            //
+        ];
     }
 }

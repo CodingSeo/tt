@@ -16,12 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [
-    'as' =>'index',
-    'uses'=>'ttcontroller@index',
+    'as' => 'index',
+    'uses' => 'ttcontroller@index',
 ]);
 
 
 Route::post('/test', [
-    'as' =>'index',
-    'uses'=>'ttcontroller@test',
+    'as' => 'test',
+    'uses' => 'ttcontroller@test',
+]);
+
+Route::post('/auth', [
+    'as' => 'auth',
+    'uses' => 'ttcontroller@auth',
 ]);

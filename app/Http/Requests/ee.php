@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\APIrequest;
+use Illuminate\Foundation\Http\FormRequest;
 
-class APIrequestImp extends APIrequest
+class ee extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class APIrequestImp extends APIrequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,6 +23,8 @@ class APIrequestImp extends APIrequest
      */
     public function rules()
     {
-        return [];
+        return [
+            //
+        ];
     }
 }

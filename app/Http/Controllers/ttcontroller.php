@@ -2,28 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\testrequest;
+use App\Http\Requests\APIrequest;
 use App\Service\TestService;
+use Illuminate\Support\Facades\Route;
 
 class ttcontroller extends Controller
 {
     private $test;
-    public function __construct(TestService $test){
+    public function __construct(TestService $test)
+    {
         $this->test = $test;
     }
-    public function index(){
-        return $this->test->test();
-
+    public function index()
+    {
+        return Route::currentRouteName();
     }
 
-    public function test(APIrequest $request){
-        return var_dump($request);
-        // return 'test';
+    public function test(APIrequest $request)
+    {
+        return $request . Route::currentRouteName();
     }
 
-    public function testpost(APIrequest $request){
-        return var_dump($request);
-        // return 'test';
+    public function auth(APIrequest $request)
+    {
+        return $request . Route::currentRouteName();
     }
-
 }
