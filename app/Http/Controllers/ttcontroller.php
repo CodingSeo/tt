@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\testrequest;
-u
 use App\Service\TestService;
 
 class ttcontroller extends Controller
@@ -17,12 +16,12 @@ class ttcontroller extends Controller
 
     }
 
-    public function test(APItestrequest $request){
+    public function test(APIrequest $request){
         return var_dump($request);
         // return 'test';
     }
 
-    public function testpost(APItestpostrequest $request){
+    public function testpost(APIrequest $request){
         return var_dump($request);
         // return 'test';
     }

@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use ApiRequest;
 use Illuminate\Support\ServiceProvider;
 use App\Service\TestService;
 use App\Service\TestServiceImp;

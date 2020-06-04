@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Requests;
-
-class testre extends testrequest{
+use App\Http\Requests\APIrequest;
+class APIrequestImp extends APIrequest{
     /**
      * Determine if the user is authorized to make this request.
      *
