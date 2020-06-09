@@ -20,6 +20,7 @@ abstract class DataTransferObject
         }
         if(!empty($errors)){
             throw new LackofInputException($errors);
+            // $class = null;
         }
     }
 }
