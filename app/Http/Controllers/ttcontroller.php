@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\test;
 use App\Http\Requests\APIrequest;
 use App\Service\TestService;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +16,7 @@ class ttcontroller extends Controller
     }
     public function index()
     {
-        return Route::currentRouteName();
+        throw new test('test');
     }
 
     public function test(APIrequest $request)
