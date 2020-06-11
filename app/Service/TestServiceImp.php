@@ -1,9 +1,15 @@
 <?php
 namespace App\Service;
 use App\Service\TestService;
+use App\test\testM;
 
 class TestServiceImp implements TestService{
     private $entity;
+    private $t;
+    public function __construct(testM $e)
+    {
+        $this->t = $e;
+    }
     public function map($model)
     {
         $this->entity =  (object) $model->toArray();
