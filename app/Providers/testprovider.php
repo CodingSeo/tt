@@ -12,8 +12,6 @@ use App\Http\Controllers\ttcontroller;
 use App\Http\Requests\APIrequest;
 use App\Http\Requests\APIrequestImp;
 use App\Http\Requests\APIrequestImpWithAuth;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
 class testprovider extends ServiceProvider
 {
@@ -30,12 +28,13 @@ class testprovider extends ServiceProvider
     {
         $container = $this->app;
         $request = $container->request;
-        $route_name =  $request->getMethod() . $request->getRequestUri();
+        $route_name =  $request->method() . '/' . $request->path();
+
         switch ($route_name) {
             case "GET/index":
-                $container->bind(APIrequest::class, APIrequestImp::class);
+                $container->bind(APIrequest::class, APIrequestImpWithAuth::class);
                 break;
-            case 'POST/test':
+            case "POST/post/test":
                 $container->bind(APIrequest::class, APIrequestImp::class);
                 break;
             case 'POST/auth':
@@ -57,5 +56,6 @@ class testprovider extends ServiceProvider
      */
     public function boot()
     {
+        // dd(Route::currentRouteName());
     }
 }

@@ -20,8 +20,7 @@ Route::get('/', [
     'uses' => 'ttcontroller@index',
 ]);
 
-
-Route::post('/test', [
+Route::post('/post/{test}/test', [
     'as' => 'test',
     'uses' => 'ttcontroller@test',
 ]);

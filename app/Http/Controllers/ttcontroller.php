@@ -13,7 +13,8 @@ class ttcontroller extends Controller
     {
         $this->test = $test;
     }
-    public function index()
+
+    public function index(APIrequest $request)
     {
         return Route::currentRouteName();
     }
