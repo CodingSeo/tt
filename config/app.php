@@ -178,7 +178,6 @@ return [
          * User Service Providers
          */
         App\Providers\testprovider::class,
-
     ],
 
     /*

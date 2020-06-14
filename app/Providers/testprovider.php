@@ -12,6 +12,13 @@ use App\Http\Controllers\ttcontroller;
 use App\Http\Requests\APIrequest;
 use App\Http\Requests\APIrequestImp;
 use App\Http\Requests\APIrequestImpWithAuth;
+<<<<<<< HEAD
+=======
+use App\test\testM;
+use App\test\testMapping;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+>>>>>>> f2b1ebc76e7ecfb7472ca8c87fe23eddce4c1e87
 
 class testprovider extends ServiceProvider
 {
@@ -44,9 +51,9 @@ class testprovider extends ServiceProvider
                 $container->bind(APIrequest::class, APIrequestImpWithAuth::class);
                 break;
         }
-
-        // $container->bind(APIrequest::class, APIrequestImp::class);
         $container->when(ttcontroller::class)->needs(TestService::class)->give(TestServiceImp::class);
+        $container->when(TestServiceImp::class)->needs(testM::class)->give(testMapping::class);
+
     }
 
     /**
@@ -54,8 +61,22 @@ class testprovider extends ServiceProvider
      *
      * @return void
      */
+<<<<<<< HEAD
     public function boot()
     {
         // dd(Route::currentRouteName());
+=======
+    public function boot(){
+        $container = $this->app;
+        // $tm = $container->make(testMapping::class);
+        $container->resolving(testM::class, function ($object, $app) {
+
+        });
+        // $container->resolving(function ($object, $app) {
+        //     if($object instanceof testM){
+        //         dd('1');
+        //     }
+        // });
+>>>>>>> f2b1ebc76e7ecfb7472ca8c87fe23eddce4c1e87
     }
 }

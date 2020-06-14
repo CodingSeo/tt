@@ -48,8 +48,14 @@ class Handler extends ExceptionHandler
      *
      * @throws \Throwable
      */
-    public function render($request, Throwable $exception)
+    public function render($request, Throwable $e)
     {
-        return parent::render($request, $exception);
+        if ($e instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+            return response(view('errors.notice', [
+                'title'       => 'Page Not Found',
+                'description' => 'Sorry, the page or resource you are trying to view does not exist.'
+            ]), 404);
+        }
+        return parent::render($request, $e);
     }
 }
